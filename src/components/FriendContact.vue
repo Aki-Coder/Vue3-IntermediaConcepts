@@ -1,7 +1,7 @@
 <template>
     <li>
         <h2>{{friend.name}}</h2>   
-        <button @click="toggleDetails">Show details</button>
+        <button @click="toggleDetails">{{detailsAreVisible ? 'Hide' : 'Show'}} Deatils</button>
         <ul v-if="detailsAreVisible">
             <li>
                 <strong>Phone:</strong> 
@@ -20,7 +20,7 @@ export default {
     data(){
         return{
             detailsAreVisible:false,
-            firend:{
+            friend:{
                 id:'maunel',
                 name:'Manuel Lorenz',
                 phone:'0123 456 789',
