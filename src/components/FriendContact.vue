@@ -18,12 +18,35 @@
 
 <script>
 export default {
-    props:[
-        'name',
-        'phoneNumber',
-        'emailAddress',
-        'isFavourite',
-    ],
+    //data from parent component
+    // props:[
+    //     'name',
+    //     'phoneNumber',
+    //     'emailAddress',
+    //     'isFavourite',
+    // ],
+    props:{
+        name:{
+            type:String,
+            reqiured:true
+        },
+        phoneNumber:{
+            type:String,
+            reqiured:true
+        },
+        emailAddress:{
+            type:String,
+            reqiured:true
+        },
+        isFavourite:{
+            type:String,
+            reqiured:false,
+            default:'0',
+            validator(value){
+                return value === '1' || value === '0';
+            }
+        }
+    },
     data(){
         return{
             detailsAreVisible:false,

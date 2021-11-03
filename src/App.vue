@@ -14,7 +14,6 @@
       name="Julie Jons"
       phone-number="5886 1111"
       email-address="julie@localhost.com"
-      is-favourite="0"
    ></friend-contact>
   </ul>
 </section>
