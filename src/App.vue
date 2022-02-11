@@ -3,6 +3,7 @@
   <header>
     <h1>My Friends</h1>
   </header>
+  <new-friend @add-contact="addContact"></new-friend>
   <ul>
     <!--in vue use cebap-case sintax; props se ne mogu menjati
     podaci odavde se mogu menjati samo ovde, ne u friendcontact komponenti (vezano za props)
@@ -27,9 +28,10 @@
 
 <script>
 import FriendContact from './components/FriendContact.vue'
+import NewFriend from './components/NewFriend.vue';
 export default {
   name: 'App',
-  components: {FriendContact},
+  components: {FriendContact, NewFriend},
   data(){
     return{
       friends:[
@@ -54,6 +56,16 @@ export default {
     toggleFavouriteStatus(friendId){
       const identifierFriend = this.friends.find(friend => friend.id === friendId);
       identifierFriend.isFavourite = !identifierFriend.isFavourite;
+    },
+    addContact(name,phone,email){
+      const newFriendContact = {
+        id:new Date().toISOString(),
+        name:name,
+        phone:phone,
+        email:email,
+        isFavourite:false
+      };
+      this.friends.push(newFriendContact);
     }
   }
 }
