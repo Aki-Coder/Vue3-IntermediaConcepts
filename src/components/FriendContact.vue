@@ -14,6 +14,7 @@
                 {{emailAddress}}
             </li>
            </ul> 
+           <button @click="$emit('delete', id)">Delete</button>
     </li>
 </template>
 
@@ -55,7 +56,7 @@ export default {
         }
     },
     //you will define which custom events your component will eventually at some point emit.
-    emits:['toggle-favorite'],
+    emits:['toggle-favorite','delete'],
     //second way of definig & validating custom events
     // emits:{
     //     'toggle-favorite':function(id){
@@ -84,7 +85,10 @@ export default {
         // },
          toggleFavourite(){
             this.$emit('toggle-favorite', this.id);
-        }
+        },
+        // deleteFriend(){
+        //     this.$emit('delete');
+        // }
     }
 }
 </script>
