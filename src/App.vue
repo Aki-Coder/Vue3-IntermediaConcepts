@@ -4,13 +4,21 @@
     <h1>My Friends</h1>
   </header>
   <ul>
+    <!--in vue use cebap-case sintax; props se ne mogu menjati
+    podaci odavde se mogu menjati samo ovde, ne u friendcontact komponenti (vezano za props)
+    :is-favourite="true" - prop that need a js(non string values) value other then string use bind
+    :key when we work with v-for
+    :bind -  dinamicaly
+    -->
    <friend-contact
       v-for="friend in friends"
       :key="friend.id"
+      :id="friend.id"
       :name="friend.name"
       :phone-number="friend.phone"
       :email-address="friend.email"
-      :is-favourite="true"
+      :is-favourite="friend.isFavourite"
+      @toggle-favorite="toggleFavouriteStatus"
    >
    </friend-contact>
   </ul>
@@ -29,15 +37,23 @@ export default {
         id:'maunel',
         name:'Manuel Lorenz',
         phone:'0123 456 789',
-        email:'maule@localhost.com'
+        email:'manuel@localhost.com',
+        isFavourite:true
       },
       {
         id:'julie',
         name:'Julie Oliver',
         phone:'0123 4545 789',
-        email:'julie@localhost.com'
+        email:'julie@localhost.com',
+        isFavourite:false
       }
       ],
+    }
+  },
+  methods:{
+    toggleFavouriteStatus(friendId){
+      const identifierFriend = this.friends.find(friend => friend.id === friendId);
+      identifierFriend.isFavourite = !identifierFriend.isFavourite;
     }
   }
 }
